@@ -21,7 +21,9 @@ export default NewsCatergory;
 
 export async function getServerSideProps(context) {
   //   console.log("context", context);
-  const { params } = context;
+  const { params, req, res } = context;
+  console.log(req.headers.cookie);
+  res.setHeader("set-cookie", ["name=test user"]);
   const { newscategory } = params;
   //   console.log("params", params);
   const response = await fetch(
